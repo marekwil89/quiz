@@ -1,0 +1,25 @@
+<section class="admin-quiz-list-section">
+  <article class="admin-quiz-list-wrapper">
+    <h2 class="text-uppercase text-center text-bold space-big">Lista Quizów</h2>
+    <fieldset class="form-group">
+      <label>Filtruj po kategorii:</label>
+      <select [(ngModel)]="selectedCategory">
+        <option *ngFor="let category of categories" [value]="category">{{category}}</option>
+      </select>
+    </fieldset>
+    <table>
+      <tr>
+        <th>Nazwa quizu</th>
+        <th class="cell-hide-mobile">Ilość pytań</th>
+        <th class="cell-hide-mobile">Kategoria</th>
+        <th></th>
+      </tr>
+      <tr *ngFor="let quiz of quizList | filter : selectedCategory; let j = index">
+        <td>{{quiz.name}}</td>
+        <td class="cell-hide-mobile">{{quiz.questions.length}}</td>
+        <td class="cell-hide-mobile">{{quiz.category}}</td>
+        <td><a class="btn btn-primary">Rozwiąż</a></td>
+      </tr>
+    </table>
+  </article>
+</section>

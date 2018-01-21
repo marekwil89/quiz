@@ -1,0 +1,55 @@
+<section class="admin-quiz-create-section">
+  <form *ngIf="response.status === false" class="admin-quiz-create-form" #quizForm="ngForm" (ngSubmit)="onSubmit()">
+    <h2 class="text-uppercase text-center text-bold space-big">Stwórz Quiz</h2>
+    <fieldset class="form-group">
+      <label>Nazwa quizu </label>
+      <input name="quiz-name" type="text" [(ngModel)]="newQuiz.name" #quizName="ngModel" required/>
+      <ul class="errors-box" *ngIf="quizName.errors && (quizName.dirty || quizName.touched)">
+          <li *ngIf="quizName.errors.required">Nazwa quizu jest wymagana</li>
+      </ul>
+    </fieldset>
+    <fieldset class="form-group">
+      <label>Wybierz kategorię</label>
+      <select name="quiz-category" [(ngModel)]="newQuiz.category" #quizCategory="ngModel" required>
+        <option *ngFor="let category of categories" [value]="category">{{category}}</option>
+      </select>
+      <ul class="errors-box" *ngIf="quizCategory.errors && (quizCategory.dirty || quizCategory.touched)">
+        <li *ngIf="quizCategory.errors.required">Wybierz kategorię</li>
+      </ul>
+    </fieldset>
+    <div class="question-box" *ngFor="let question of newQuiz.questions; let j = index">
+      <h3 class="text-uppercase text-center text-bold space-medium">Pytanie nr {{j+1}}</h3>
+      <button class="btn btn-absolute" type="button" (click)="newQuiz.questions.splice(j, 1);">+</button>
+      <fieldset class="form-group">
+        <label>Tekst pytania:</label>
+        <input [name]="'question-text_' + j" type="text" [(ngModel)]="question.text" #questionText="ngModel" required/>
+        <ul class="errors-box" *ngIf="questionText.errors && (questionText.dirty || questionText.touched)">
+          <li *ngIf="questionText.errors.required">Uzupełnij treść pytania</li>
+        </ul>
+      </fieldset>
+      <div class="answer-box" *ngFor="let answer of question.answers; let i = index">
+        <fieldset class="form-group">
+          <label>Tekst odpowiedzi nr {{i+1}}: </label>
+          <input [name]="'answer_text_' + i + j" type="text" [(ngModel)]="answer.text" #answerText="ngModel" required/>
+          <ul class="errors-box" *ngIf="answerText.errors && (answerText.dirty || answerText.touched)">
+            <li *ngIf="answerText.errors.required">Uzupełnij treść odpowiedzi</li>
+          </ul>
+        </fieldset>
+        <fieldset class="form-group">
+          <label>Czy odpowiedź jest prawidłowa?: </label>
+          <input [name]="'answer_correct_' + i + j" type="checkbox" [(ngModel)]="answer.correct"/>
+        </fieldset>
+      </div>
+      <button class="btn btn-success" type="button" (click)="newQuiz.questions[j].answers.push({text: null,correct: true})">Dodaj odpowiedź</button>
+    </div>
+    <button class="btn btn-primary" type="button" (click)="newQuiz.questions.push({text: '',answers: [{text: null,correct: true}, {text: null,correct: false}]})">Dodaj pytanie</button>
+    <hr>
+    <div class="form-footer">
+      <button class="btn btn-warn" [disabled]="quizForm.invalid || newQuiz.questions.length < 1" type="submit">Utwórz quiz</button>
+    </div>
+  </form>
+  <div *ngIf="response.status === true" class="success-message-box">
+      <h3 class="text-uppercase text-center text-bold space-medium">Quiz został utworzony</h3>
+      <button (click)="response.status = false" type="button" class="btn btn-primary" color="accent" mat-raised-button>Stwórz nowy Quiz</button>
+    </div>
+</section>

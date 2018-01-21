@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700&subset=latin-ext');
+@import "./variables.scss";
+*{
+    font-family: 'Lato', sans-serif;
+    box-sizing: border-box;
+}
+
+h2,h3,h1{
+	color: $font-color;
+	font-weight: 300;
+
+	&.text-bold{
+		font-weight: 700;
+	}
+
+	&.main-color{
+		color: $main-color;
+	}
+
+	&.text-uppercase{
+		text-transform: uppercase;
+	}
+
+	&.text-center{
+		text-align: center;
+	}
+
+	&.space-big{
+		margin: 40px 0 50px 0;
+	}
+
+	&.space-medium{
+		margin: 30px 0 40px 0;
+	}
+}
+
+h2{
+    font-size: 35px;
+    
+    @media(max-width: 450px){
+        font-size: 30px;
+    }
+}
+
+h3{
+    font-size: 25px;
+    
+    @media(max-width: 450px){
+        font-size: 20px;
+    }
+}

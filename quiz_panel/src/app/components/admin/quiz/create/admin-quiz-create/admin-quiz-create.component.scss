@@ -1,0 +1,64 @@
+@import "../../../../../../assets/scss/variables.scss";
+
+.admin-quiz-create-section{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    .success-message-box{
+        background: $light-color;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 80px 40px;
+    }
+
+    .admin-quiz-create-form{
+        background: $light-color;
+        width: 1000px;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 80px 40px;
+
+        @media(max-width: 1020px){
+            width: 100%;
+            padding: 20px;
+        }
+
+        .question-box{
+            overflow: hidden;
+            background: $light-color;
+            padding: 20px;
+            width: 100%;
+            position: relative;
+
+            @media(max-width: 450px){
+                padding: 0;
+            }
+
+            .answer-box{
+                padding: 20px;
+                border-bottom: 1px solid $gray-color;
+
+                @media(max-width: 450px){
+                    padding: 0;
+                }
+            }
+        }
+
+        .form-footer{
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+        }
+    }
+}
+
+
+
+
+
