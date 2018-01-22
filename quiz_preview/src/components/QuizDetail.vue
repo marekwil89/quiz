@@ -64,7 +64,7 @@
         }
       },
       onSubmit: function(e){
-        e.preventDefault()
+        //e.preventDefault()
         this.calculateScore();
         this.showScore = true;
         this.selectedTab = 0;

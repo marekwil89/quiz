@@ -30,6 +30,7 @@ export class AdminQuizCreateComponent implements OnInit {
   onSubmit(){
     this.QuizService.create(this.newQuiz).subscribe(
       res => { 
+        console.log(res);
         this.response = res.json()
         this.cleanForm();
       }
