@@ -1,0 +1,21 @@
+<section class="admin-category-add-section">
+  <h2 class="text-uppercase text-center text-bold space-big">Kategorie</h2>
+  <div class="admin-category-wrapper">
+    <form class="admin-category-add-form" #categoryForm="ngForm" (ngSubmit)="onSubmit()">
+        <fieldset class="form-group">
+          <label>Nazwa kategorii </label>
+          <input name="category-name" type="text" [(ngModel)]="categoryModel" #categoryName="ngModel" required/>
+          <ul class="errors-box" *ngIf="categoryName.errors && (categoryName.dirty || categoryName.touched)">
+              <li *ngIf="categoryName.errors.required">Uzupełnij nazwę kategorii</li>
+          </ul>
+        </fieldset>
+        <div class="form-footer">
+          <button class="btn btn-warn" [disabled]="categoryForm.invalid" type="submit">Dodaj Kategorię</button>
+        </div>
+      </form>
+      <ol class="admin-category-list-box">
+        <li *ngFor="let category of categories; let i = index">{{i+1}} {{category.name}}</li>
+      </ol>
+  </div>
+
+</section>

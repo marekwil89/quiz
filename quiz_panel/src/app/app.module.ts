@@ -9,10 +9,12 @@ import { AppComponent } from './app.component';
 import { AdminQuizListComponent } from './components/admin/quiz/list/admin-quiz-list/admin-quiz-list.component';
 import { AdminQuizCreateComponent } from './components/admin/quiz/create/admin-quiz-create/admin-quiz-create.component';
 import { AdminNavigationComponent } from './components/admin/navigation/admin-navigation/admin-navigation.component';
+import { AdminCategoryAddComponent } from './components/admin/category/add/admin-category-add/admin-category-add.component';
 
 import { FilterPipe } from './pipes/filter.pipe';
 
 import { QuizService } from './services/quiz.service'
+import { CategoryService } from './services/category.service'
 
 @NgModule({
   declarations: [
@@ -20,6 +22,7 @@ import { QuizService } from './services/quiz.service'
     AdminQuizListComponent,
     AdminQuizCreateComponent,
     AdminNavigationComponent,
+    AdminCategoryAddComponent,
     FilterPipe
   ],
   imports: [
@@ -32,7 +35,7 @@ import { QuizService } from './services/quiz.service'
     // MaterialModule,
     // BrowserAnimationsModule
   ],
-  providers: [QuizService],
+  providers: [QuizService, CategoryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

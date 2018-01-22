@@ -1,0 +1,43 @@
+.btn{
+    margin: 20px 0;
+    border: none;
+    padding: 10px 18px;
+    vertical-align: middle;
+    text-decoration: none;
+    background-color: inherit;
+    text-align: center;
+    cursor: pointer;
+    white-space: nowrap;
+    text-transform: uppercase;
+
+    &.btn-absolute{
+		background: transparent;
+        position: absolute;
+        right: -20px;
+        top: -30px;
+        transform: rotate(45deg);
+        font-size: 40px;
+        color: $gray-color;
+    }
+
+    &.btn-primary{
+        background: $primary-color;
+        color: white;
+	}
+	
+    &.btn-success{
+        background: $success-color;
+        color: white;
+    }
+
+	&.btn-warn{
+		background: $warn-color;
+		color: white;
+	}
+
+    &:disabled{
+		cursor: not-allowed;
+		background-color: darken($color: $light-color, $amount: 5%);
+		color: $gray-color;
+    }
+}

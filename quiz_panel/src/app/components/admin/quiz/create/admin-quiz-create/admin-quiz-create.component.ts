@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { QuizService } from '../../../../../services/quiz.service';
+import { CategoryService } from '../../../../../services/category.service';
 import { Quiz } from '../../../../../models/quiz';
 
-import { ErrorStateMatcher } from '@angular/material/core';
+// import { ErrorStateMatcher } from '@angular/material/core';
 
 @Component({
   selector: 'app-admin-quiz-create',
@@ -16,10 +17,10 @@ export class AdminQuizCreateComponent implements OnInit {
   categories:Array<string>;
   response:any = {status: false};
 
-  constructor(private QuizService: QuizService) { }
+  constructor(private QuizService: QuizService, private CategoryService: CategoryService) { }
 
   ngOnInit() {
-    this.categories = this.QuizService.getCategories();
+    this.getCategoryList();
     this.cleanForm();
   }
 
@@ -35,5 +36,11 @@ export class AdminQuizCreateComponent implements OnInit {
         this.cleanForm();
       }
     ); 
+  }
+
+  getCategoryList(){
+    this.CategoryService.getList().subscribe((res) => {
+      this.categories = res.json();
+    });
   }
 }

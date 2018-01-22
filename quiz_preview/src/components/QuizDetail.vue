@@ -1,16 +1,16 @@
 <template>
   <section class="quiz-detail-section">
    
-<md-dialog :md-active.sync="showScore">
-      <md-dialog-title>Twój wynik to:</md-dialog-title>
-      <md-dialog-content class="dialog-content">
-        <h2 class="md-display-3">{{score}}/{{quizDetail.questions.length}}</h2>
-      </md-dialog-content>
-      <md-dialog-actions>
-        <md-button class="md-primary" @click="showScore = false">Zamknij</md-button>
-        <router-link to="/"><md-button class="md-accent">Zobacz inne Quizy</md-button></router-link>
-      </md-dialog-actions>
-    </md-dialog>
+  <md-dialog v-if="quizDetail.questions" :md-active.sync="showScore">
+    <md-dialog-title>Twój wynik to:</md-dialog-title>
+    <md-dialog-content class="dialog-content">
+      <h2 class="md-display-3">{{score}}/{{quizDetail.questions.length}}</h2>
+    </md-dialog-content>
+    <md-dialog-actions>
+      <md-button class="md-primary" @click="showScore = false">Zamknij</md-button>
+      <router-link to="/"><md-button class="md-accent">Zobacz inne Quizy</md-button></router-link>
+    </md-dialog-actions>
+  </md-dialog>
 
    <md-card class="quiz-detail-card">
       <md-card-header>
@@ -19,7 +19,7 @@
         <h4 v-if="quizDetail.questions" class="md-subheading">Pytanie nr: {{selectedTab+1}}/{{quizDetail.questions.length}}</h4>
       </md-card-header>
       <md-card-content>
-        <form v-on:submit="onSubmit()" name="quiz-form">
+        <form @submit.prevent="onSubmit()" name="quiz-form">
           <article v-if="selectedTab === index" v-for="(question, index) in quizDetail.questions" :key="question._id" class="question-box">
             <h2 class="md-display-2">{{question.text}}</h2>
             <fieldset class="radio-box">
@@ -63,15 +63,14 @@
           })
         }
       },
-      onSubmit: function(e){
-        //e.preventDefault()
+      onSubmit: function(){
+        // e.preventDefault()
         this.calculateScore();
         this.showScore = true;
-        this.selectedTab = 0;
       },
       getDetail: function() {
         var paramId = this.$route.params.id;
-        this.$http.get('http://localhost:3000/quiz/detail/' + paramId).then(function(response){
+        this.$http.get('http://80.211.200.144:3000/quiz/detail/' + paramId).then(function(response){
           this.quizDetail = response.data;
         });
       },

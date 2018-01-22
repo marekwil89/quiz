@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AdminQuizCreateComponent } from './components/admin/quiz/create/admin-quiz-create/admin-quiz-create.component';
 import { AdminQuizListComponent } from './components/admin/quiz/list/admin-quiz-list/admin-quiz-list.component';
+import { AdminCategoryAddComponent } from './components/admin/category/add/admin-category-add/admin-category-add.component';
 
 const routes: Routes = [
   {
@@ -11,10 +12,15 @@ const routes: Routes = [
   { 
     path: '',    
     redirectTo: '/AdminQuizCreate', 
-    pathMatch: 'full'  },
+    pathMatch: 'full'  
+  },
   {
     path: 'AdminQuizList',
     component: AdminQuizListComponent
+  },
+  {
+    path: 'AdminCategoryAdd',
+    component: AdminCategoryAddComponent
   }
 ];
 

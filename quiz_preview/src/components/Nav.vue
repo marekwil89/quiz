@@ -1,8 +1,9 @@
 <template>
-    <md-toolbar class="md-accent" md-elevation="1">
-      <!-- <h3 class="md-title" style="flex: 1">Title</h3> -->
-      <router-link to="/"><md-button class="md-accent">Lista Quizów</md-button></router-link>
-    </md-toolbar>
+  <md-toolbar class="md-accent" md-elevation="1">
+    <!-- <h3 class="md-title" style="flex: 1">Title</h3> -->
+    <router-link to="/"><md-button class="md-primary">Lista Quizów</md-button></router-link>
+    <a href="http://80.211.200.144:3000"><md-button class="md-primary">Stwórz Quiz</md-button></a>
+  </md-toolbar>
 </template>
 
 <script>
@@ -13,6 +14,7 @@
 
 <style lang="scss" scoped>
   .router-link-active{
-    background: lighten($color: #64dd17, $amount: 20%);
+    text-decoration: none !important; 
+    color: #ffffff !important;
   }
 </style>

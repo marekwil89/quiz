@@ -11,7 +11,7 @@
     <fieldset class="form-group">
       <label>Wybierz kategorię</label>
       <select name="quiz-category" [(ngModel)]="newQuiz.category" #quizCategory="ngModel" required>
-        <option *ngFor="let category of categories" [value]="category">{{category}}</option>
+        <option *ngFor="let category of categories" [value]="category.name">{{category.name}}</option>
       </select>
       <ul class="errors-box" *ngIf="quizCategory.errors && (quizCategory.dirty || quizCategory.touched)">
         <li *ngIf="quizCategory.errors.required">Wybierz kategorię</li>

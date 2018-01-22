@@ -6,19 +6,18 @@ import 'rxjs/add/operator/map';
 export class QuizService {
 
   constructor(public http: Http) { }
-  host: 'http://localhost:3000';
 
   getCategories(){
     return ['Programowanie', 'Jedzenie', 'Muzyka', 'Film'];
   }
 
   create(quiz) {
-    return this.http.post( 'http://localhost:3000/quiz/add/', quiz);
-    // return this.http.post('http://localhost:3000/quiz/add/', {});
+    return this.http.post( 'http://80.211.200.144:3000/quiz/add/', quiz);
+    // return this.http.post('http://80.211.200.144:3000/quiz/add/', {});
       // .map(res => res.json());
   }
 
   getList() {
-    return this.http.get( 'http://localhost:3000/quiz/list/');
+    return this.http.get( 'http://80.211.200.144:3000/quiz/list/');
   }
 } 
